@@ -36,6 +36,7 @@ const createBulletPoint = (index) => {
 
 createBulletPoint(0)
 
+
 let index = 0
 const image = document.getElementsByClassName("banner-img")[0]
 const tag = document.getElementById("tagLine");
@@ -76,7 +77,3 @@ const goBack = () => {
 
 goNextButton.addEventListener("click", goNext, false)
 goBackButton.addEventListener("click", goBack, false)
-
-
-
-// Message //
