@@ -18,8 +18,21 @@ const slides = [
 	}
 ]
 
+/* DÉFINIR INDEX = 0 */
+let index = 0
+/* ON VA CHERCHER LA BANNIERE */
+const image = document.querySelector(".banner-img")
+/* ON VA CHERCHER LE TEXTE */
+const tag = document.getElementById("tagLine");
+/* ON VA CHERCHER LA FLECHE */
+const goNextButton = document.getElementById("arrow_right")
+/* ON VA CHERCHER LA FLECHE */
+const goBackButton = document.getElementById("arrow_left")
+
+
+/* CREATION BULLET POINT */
 const createBulletPoint = (index) => {
-    const bulletPointContainer = document.getElementsByClassName("dots")[0]
+    const bulletPointContainer = document.querySelector(".dots")
     while (bulletPointContainer.firstChild) {
         bulletPointContainer.firstChild.remove()
     }
@@ -34,46 +47,39 @@ const createBulletPoint = (index) => {
     }
 }
 
-createBulletPoint(0)
-
-
-let index = 0
-const image = document.getElementsByClassName("banner-img")[0]
-const tag = document.getElementById("tagLine");
-const goNextButton = document.getElementById("arrow_right")
-const goBackButton = document.getElementById("arrow_left")
-
+/* CREATION DE LA FLECHE DE DROITE */
 const goNext = () => {
     if (index < slides.length - 1) {
-        console.log(index)
         index = index + 1
         createBulletPoint(index)
         image.src="./assets/images/slideshow/"+ slides[index].image
-        tag.innerHTML=slides[index].tagLine
+        tag.innerHTML = slides[index].tagLine
     } else {
-        console.log(index)
         index = 0
         createBulletPoint(index)
         image.src="./assets/images/slideshow/"+ slides[index].image
-        tag.innerHTML=slides[index].tagLine
+        tag.innerHTML = slides[index].tagLine
     }
 }
 
+/* CREATION DE LA FLECHE DE GAUCHE */
 const goBack = () => {
     if (index > 0) {
-        console.log(index)
         index = index - 1
         createBulletPoint(index)
         image.src="./assets/images/slideshow/"+ slides[index].image
-        tag.innerHTML=slides[index].tagLine
+        tag.innerHTML = slides[index].tagLine
     } else {
-        console.log(index)
         index = slides.length - 1
         createBulletPoint(index)
         image.src="./assets/images/slideshow/"+ slides[index].image
-        tag.innerHTML=slides[index].tagLine
+        tag.innerHTML = slides[index].tagLine
     }
 }
 
+/* ON APPELLE LA FONCTION POUR CREER LES BULLETS POINTS */
+createBulletPoint(0)
+
+/* ON APPELLE LA FONCTION POUR AVOIR UN EVENEMENT AU CLIQUE SUR LES FLECHES */
 goNextButton.addEventListener("click", goNext, false)
 goBackButton.addEventListener("click", goBack, false)
